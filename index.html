@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nitric Boost™ | Clinical-Grade Support for Male Performance</title>
+  <meta name="description" content="Discover Nitric Boost – clinically-backed nitric oxide support for enhanced blood flow, energy, and vitality. 180-Day Guarantee + FREE Expert Guides.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --accent: #3b82f6;
+      --danger: #ef4444;
+      --orange: #f97316;
+      --text: #111827;
+      --muted: #6b7280;
+      --light: #f9fafb;
+      --bg-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f3f4f6;
+      min-height: 100vh;
+      padding: 12px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .container {
+      max-width: 540px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      animation: fadeIn 0.5s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: none; }
+    }
+    
+    /* Sticky CTA Bar */
+    .sticky-cta {
+      position: sticky;
+      top: 0;
+      background: var(--danger);
+      color: white;
+      text-align: center;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: slideDown 0.4s ease-out;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+    
+    .header {
+      background: var(--bg-gradient);
+      color: white;
+      text-align: center;
+      padding: 32px 24px 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      padding: 7px 16px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .subtitle {
+      font-size: 16px;
+      opacity: 0.95;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+    
+    .content { padding: 32px 24px 40px; }
+    
+    .product-showcase {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .product-img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      margin-bottom: 16px;
+    }
+    
+    .social-proof {
+      background: #fef3c7;
+      border: 2px solid #fbbf24;
+      border-radius: 12px;
+      padding: 14px 16px;
+      text-align: center;
+      margin-bottom: 24px;
+      animation: pulse 3s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .social-proof-text {
+      font-weight: 700;
+      color: #92400e;
+      font-size: 15px;
+    }
+    .live-counter {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--danger);
+      margin: 4px 0;
+    }
+    
+    .rating {
+      text-align: center;
+      margin: 20px 0;
+      padding: 16px;
+      background: var(--light);
+      border-radius: 12px;
+    }
+    .stars { 
+      font-size: 26px; 
+      color: #fbbf24; 
+      letter-spacing: 3px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .review-text { 
+      color: var(--muted); 
+      font-size: 15px; 
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* Pricing Cards - Optimized Hierarchy */
+    .pricing-header {
+      text-align: center;
+      margin: 32px 0 24px;
+    }
+    .pricing-header h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .pricing-header p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .price-card {
+      border: 3px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 16px;
+      position: relative;
+      transition: all 0.3s;
+      background: white;
+    }
+    .price-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 8px 24px rgba(16,185,129,0.15);
+    }
+    
+    .best-value-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--danger);
+      color: white;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(239,68,68,0.4);
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-4px); }
+    }
+    
+    .recommended {
+      border-color: var(--primary);
+      border-width: 4px;
+      background: linear-gradient(to bottom, #ecfdf5 0%, white 100%);
+      box-shadow: 0 12px 32px rgba(16,185,129,0.2);
+    }
+    
+    .package-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .package-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .old-price {
+      font-size: 20px;
+      color: #9ca3af;
+      text-decoration: line-through;
+      font-weight: 600;
+    }
+    .new-price {
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .per-jar {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    
+    .savings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .savings-item {
+      background: #dbeafe;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1e40af;
+    }
+    .savings-item.highlight {
+      background: var(--danger);
+      color: white;
+      grid-column: 1 / -1;
+    }
+    
+    .value-props {
+      margin: 16px 0;
+    }
+    .value-prop {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .value-prop:last-child { margin-bottom: 0; }
+    .check { 
+      color: var(--primary); 
+      font-size: 18px; 
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      font-size: 18px;
+      font-weight: 800;
+      text-align: center;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+      margin-top: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .btn-primary {
+      background: var(--bg-gradient);
+      color: white;
+      box-shadow: 0 8px 24px rgba(16,185,129,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(16,185,129,0.45);
+    }
+    .btn-secondary {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      box-shadow: 0 8px 24px rgba(59,130,246,0.35);
+    }
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(59,130,246,0.45);
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+      margin: 40px 0;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .benefits-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .benefit-card {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-left: 4px solid var(--primary);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .benefit-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .benefit-content h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+    .benefit-content p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      margin: 40px 0;
+    }
+    .testimonial {
+      background: #eff6ff;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--accent);
+      position: relative;
+    }
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 20px;
+    }
+    .testimonial-author {
+      flex: 1;
+    }
+    .author-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .author-stars {
+      color: #fbbf24;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    .verified-badge {
+      background: #10b981;
+      color: white;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .quote {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #374151;
+      font-style: italic;
+    }
+
+    /* Guarantee */
+    .guarantee-section {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border: 3px solid #10b981;
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+      margin: 32px 0;
+    }
+    .guarantee-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+    .guarantee-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #065f46;
+      margin-bottom: 8px;
+    }
+    .guarantee-text {
+      font-size: 15px;
+      color: #047857;
+      line-height: 1.6;
+    }
+
+    /* Trust Badges */
+    .trust-section {
+      margin: 32px 0;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .trust-badge {
+      background: var(--light);
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+    .trust-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .trust-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* FAQ Teaser */
+    .faq-teaser {
+      background: #fef3c7;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .faq-teaser h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .faq-teaser p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 24px;
+      background: var(--light);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .secure-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 16px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 28px; }
+      .new-price { font-size: 38px; }
+      .content { padding: 28px 20px 36px; }
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="sticky-cta">
+      ⚡ 73% OFF Today Only - Limited Stock Available
+    </div>
+
+    <div class="header">
+      <div class="badge">🏆 Featured on Men's Health • GQ • Forbes</div>
+      <h1>Reignite Your Vitality Naturally</h1>
+      <p class="subtitle">Join 47,000+ men using Nitric Boost to support healthy blood flow, energy levels, and peak performance.</p>
+    </div>
+
+    <div class="content">
+      <div class="product-showcase">
+        <img src="Capture.JPG" alt="Nitric Boost Supplement" class="product-img">
+      </div>
+
+      <div class="social-proof">
+        <div class="social-proof-text">🔥 Customers viewing this page now:</div>
+        <div class="live-counter" id="liveCounter">247</div>
+        <div style="font-size:13px; color:#92400e; font-weight:600;">Don't miss out - stock running low!</div>
+      </div>
+
+      <div class="rating">
+        <div class="stars">★★★★★</div>
+        <div class="review-text">4.9/5 from <strong>12,847</strong> verified reviews</div>
+      </div>
+
+      <!-- Pricing Section -->
+      <div class="pricing-header">
+        <h2>Choose Your Package</h2>
+        <p>All packages include FREE bonuses + 180-day guarantee</p>
+      </div>
+
+      <!-- 6 Bottles - Best Value -->
+      <div class="price-card recommended">
+        <div class="best-value-badge">🏆 BEST VALUE - SAVE $888</div>
+        <div class="package-title">6-Month Supply</div>
+        <div class="package-subtitle">Most Popular • 96% of customers choose this</div>
+        
+        <div class="price-row">
+          <div class="old-price">$1,182</div>
+          <div>
+            <div class="new-price">$294</div>
+            <div class="per-jar">$49 per jar</div>
+          </div>
+        </div>
+
+        <div class="savings-grid">
+          <div class="savings-item highlight">73% OFF TODAY</div>
+          <div class="savings-item">FREE Shipping</div>
+          <div class="savings-item">FREE Bonuses ($147)</div>
+        </div>
+
+        <div class="value-props">
+          <div class="value-prop"><span class="check">✓</span> 6 full jars (180-day supply)</div>
+          <div class="value-prop"><span class="check">✓</span> High Octane Tips guide</div>
+          <div class="value-prop"><span class="check">✓</span> Sexual Endurance guide</div>
+          <div class="value-prop"><span class="check">✓</span> Full 180-day money-back guarantee</div>
+        </div>
+
+        <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-primary">
+          🎯 Claim 73% Discount Now →
+        </a>
+      </div>
+
+      <!-- 3 Bottles -->
+      <div class="price-card">
+        <div class="package-title">3-Month Supply</div>
+        <div class="package-subtitle">Great for testing results</div>
+        
+        <div class="price-row">
+          <div class="old-price">$591</div>
+          <div>
+            <div class="new-price">$177</div>
+            <div class="per-jar">$59 per jar</div>
+          </div>
+        </div>
+
+        <div class="savings-grid">
+          <div class="savings-item highlight">70% OFF</div>
+          <div class="savings-item">FREE Shipping</div>
+          <div class="savings-item">FREE Bonuses</div>
+        </div>
+
+        <div class="value-props">
+          <div class="value-prop"><span class="check">✓</span> 3 full jars (90-day supply)</div>
+          <div class="value-prop"><span class="check">✓</span> Both FREE bonus guides</div>
+          <div class="value-prop"><span class="check">✓</span> 180-day guarantee</div>
+        </div>
+
+        <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-secondary">
+          Get 3-Month Supply →
+        </a>
+      </div>
+
+      <!-- 1 Bottle -->
+      <div class="price-card">
+        <div class="package-title">1-Month Supply</div>
+        <div class="package-subtitle">Try it risk-free</div>
+        
+        <div class="price-row">
+          <div class="old-price">$197</div>
+          <div>
+            <div class="new-price">$69</div>
+            <div class="per-jar">one-time</div>
+          </div>
+        </div>
+
+        <div class="savings-grid">
+          <div class="savings-item highlight">65% OFF</div>
+          <div class="savings-item">$9.99 Shipping</div>
+        </div>
+
+        <div class="value-props">
+          <div class="value-prop"><span class="check">✓</span> 1 full jar (30-day supply)</div>
+          <div class="value-prop"><span class="check">✓</span> FREE bonus guides</div>
+          <div class="value-prop"><span class="check">✓</span> 180-day guarantee</div>
+        </div>
+
+        <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-secondary">
+          Start with 1 Jar →
+        </a>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="benefits-section">
+        <h2 class="section-title">How Nitric Boost Works For You</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">💪</div>
+            <div class="benefit-content">
+              <h3>Enhanced Blood Flow</h3>
+              <p>Supports healthy circulation for improved physical performance and vitality</p>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">⚡</div>
+            <div class="benefit-content">
+              <h3>Natural Energy Boost</h3>
+              <p>Feel more energized throughout the day without jitters or crashes</p>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">❤️</div>
+            <div class="benefit-content">
+              <h3>Heart Health Support</h3>
+              <p>Nitric oxide plays a crucial role in cardiovascular wellness</p>
+            </div>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🎯</div>
+            <div class="benefit-content">
+              <h3>Peak Performance</h3>
+              <p>Support your body's natural ability to perform at its best</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="testimonials-section">
+        <h2 class="section-title">What Men Are Saying</h2>
+        
+        <div class="testimonial">
+          <div class="testimonial-header">
+            <div class="avatar">SW</div>
+            <div class="testimonial-author">
+              <div class="author-name">Steve W. <span class="verified-badge">✓ Verified</span></div>
+              <div class="author-stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="quote">"The confidence boost is real. My energy levels are through the roof, and my wife has definitely noticed the difference. Best investment I've made in my health this year."</p>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-header">
+            <div class="avatar">DS</div>
+            <div class="testimonial-author">
+              <div class="author-name">David S. <span class="verified-badge">✓ Verified</span></div>
+              <div class="author-stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="quote">"I was skeptical at first, but after 3 weeks I noticed significant improvements. My stamina is better, I feel more energized, and our relationship has never been stronger."</p>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial-header">
+            <div class="avatar">MR</div>
+            <div class="testimonial-author">
+              <div class="author-name">Mike R. <span class="verified-badge">✓ Verified</span></div>
+              <div class="author-stars">★★★★★</div>
+            </div>
+          </div>
+          <p class="quote">"At 52, I thought my best days were behind me. Nitric Boost proved me wrong. I'm back to feeling like I'm in my 30s again. Highly recommend to any guy over 40."</p>
+        </div>
+      </div>
+
+      <!-- Guarantee -->
+      <div class="guarantee-section">
+        <div class="guarantee-icon">🛡️</div>
+        <div class="guarantee-title">180-Day Empty Jar Guarantee</div>
+        <p class="guarantee-text">Try Nitric Boost completely risk-free for a full 6 months. If you're not thrilled with your results, simply return the jars—even if they're empty—for a full refund. No questions asked.</p>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="trust-section">
+        <div class="trust-grid">
+          <div class="trust-badge">
+            <div class="trust-icon">🏭</div>
+            <div class="trust-label">GMP Certified<br>USA Facility</div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-icon">🌱</div>
+            <div class="trust-label">100% Natural<br>Non-GMO</div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-icon">🔬</div>
+            <div class="trust-label">3rd Party<br>Lab Tested</div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-icon">🌳</div>
+            <div class="trust-label">1 Tree Planted<br>Per Purchase</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Teaser -->
+      <div class="faq-teaser">
+        <h3>Have Questions?</h3>
+        <p><strong>How soon will I see results?</strong> Most men notice improvements within 2-3 weeks</p>
+        <p><strong>Is it safe?</strong> Yes - 100% natural, GMP certified, 3rd party tested</p>
+        <p><strong>What if it doesn't work?</strong> Full refund within 180 days, guaranteed</p>
+      </div>
+
+      <!-- Final CTA -->
+      <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-primary" style="font-size:20px; padding:20px;">
+        🎯 Claim Your Discount Now →
+      </a>
+
+    </div>
+
+    <div class="footer">
+      <p><strong>Secure Checkout</strong> • One-time payment • No subscriptions</p>
+      <p>Ships within 3-5 business days (USA) • International shipping available</p>
+      <div class="secure-icons">
+        <span>🔒 256-bit SSL</span>
+        <span>💳 ClickBank Secure</span>
+        <span>✓ Privacy Protected</span>
+      </div>
+      <p style="margin-top:16px; font-size:11px;">
+        * These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Live counter animation
+    function animateCounter() {
+      const counter = document.getElementById('liveCounter');
+      const min = 180;
+      const max = 320;
+      const newCount = Math.floor(Math.random() * (max - min + 1)) + min;
+      counter.textContent = newCount;
+    }
+    setInterval(animateCounter, 8000);
+  </script>
+
+</body>
+</html>
