@@ -787,6 +787,12 @@
         const ua = navigator.userAgent || '';
         return /TikTok|musically|com\.zhiliaoapp|tt_webview/i.test(ua);
       }
+      function isAndroid() {
+        return /Android/i.test(navigator.userAgent || '');
+      }
+      function isIOS() {
+        return /iPhone|iPad|iPod/i.test(navigator.userAgent || '');
+      }
 
       function androidIntentUrl(href) {
         // Build an intent:// URL that asks Android to open Chrome (works on many Android devices)
@@ -815,8 +821,37 @@
         if(!href) return;
 
         if(isTikTokWebview()){
-          // Prevent default navigation in the in-app browser and show modal with options
+          // Prevent default navigation in the in-app browser
           e.preventDefault();
+          console.log('Detected TikTok webview. Attempting external open for', href);
+
+          // Try automatic attempts first (best-effort). If they fail, show modal as fallback.
+          if(isAndroid()){
+            try {
+              // Attempt intent:// which often triggers Chrome on Android
+              window.location = androidIntentUrl(href);
+              // If the intent doesn't open (webview swallowed), show modal after short delay
+              setTimeout(function(){
+                showOpenExternalModal(href);
+              }, 700);
+              return;
+            } catch(err){
+              console.warn('Intent open failed, showing modal', err);
+              showOpenExternalModal(href);
+              return;
+            }
+          }
+
+          if(isIOS()){
+            // iOS has no intent; try opening in a new window (may be blocked), then show modal
+            try {
+              window.open(href, '_blank', 'noopener');
+            } catch(err){}
+            setTimeout(function(){ showOpenExternalModal(href); }, 600);
+            return;
+          }
+
+          // Other/unknown: just show modal
           showOpenExternalModal(href);
         } else {
           // Not TikTok: let the link open normally (target=_blank already set)
