@@ -575,7 +575,7 @@
           <div class="value-prop"><span class="check">✓</span> Full 180-day money-back guarantee</div>
         </div>
 
-        <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-primary">
+        <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-primary external-link" target="_blank" rel="noopener noreferrer">
           🎯 Claim 73% Discount Now →
         </a>
       </div>
@@ -605,7 +605,7 @@
           <div class="value-prop"><span class="check">✓</span> 180-day guarantee</div>
         </div>
 
-        <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-secondary">
+        <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-secondary external-link" target="_blank" rel="noopener noreferrer">
           Get 3-Month Supply →
         </a>
       </div>
@@ -634,7 +634,7 @@
           <div class="value-prop"><span class="check">✓</span> 180-day guarantee</div>
         </div>
 
-        <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-secondary">
+        <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-secondary external-link" target="_blank" rel="noopener noreferrer">
           Start with 1 Jar →
         </a>
       </div>
@@ -750,7 +750,7 @@
       </div>
 
       <!-- Final CTA -->
-      <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-primary" style="font-size:20px; padding:20px;">
+      <a href="https://2e393dfwj8hp8nflq5uk3h6obe.hop.clickbank.net/" class="btn btn-primary external-link" target="_blank" rel="noopener noreferrer" style="font-size:20px; padding:20px;">
         🎯 Claim Your Discount Now →
       </a>
 
@@ -780,7 +780,83 @@
       counter.textContent = newCount;
     }
     setInterval(animateCounter, 8000);
+    
+    // External browser handling for in-app webviews (TikTok workaround)
+    (function(){
+      function isTikTokWebview() {
+        const ua = navigator.userAgent || '';
+        return /TikTok|musically|com\.zhiliaoapp|tt_webview/i.test(ua);
+      }
+
+      function androidIntentUrl(href) {
+        // Build an intent:// URL that asks Android to open Chrome (works on many Android devices)
+        const stripped = href.replace(/^https?:\/\//i, '');
+        return 'intent://' + stripped + '#Intent;scheme=https;package=com.android.chrome;end';
+      }
+
+      function showOpenExternalModal(href) {
+        const modal = document.getElementById('externalOpenModal');
+        const copyInput = document.getElementById('externalCopyInput');
+        copyInput.value = href;
+        modal.style.display = 'flex';
+      }
+
+      function hideOpenExternalModal(){
+        const modal = document.getElementById('externalOpenModal');
+        modal.style.display = 'none';
+      }
+
+      // Attach click handler to links with class 'external-link'
+      document.addEventListener('click', function(e){
+        const el = e.target.closest && e.target.closest('a.external-link');
+        if(!el) return;
+        const href = el.href;
+
+        if(!href) return;
+
+        if(isTikTokWebview()){
+          // Prevent default navigation in the in-app browser and show modal with options
+          e.preventDefault();
+          showOpenExternalModal(href);
+        } else {
+          // Not TikTok: let the link open normally (target=_blank already set)
+        }
+      }, false);
+
+      // Modal button actions
+      window.openInChromeIntent = function(){
+        const href = document.getElementById('externalCopyInput').value;
+        try { window.location = androidIntentUrl(href); } catch(err) { window.open(href, '_blank'); }
+      };
+      window.openInBrowser = function(){
+        const href = document.getElementById('externalCopyInput').value;
+        // Try opening in new tab — some webviews still intercept; user may need to choose 'open in browser' from menu
+        window.open(href, '_blank', 'noopener');
+      };
+      window.copyLinkToClipboard = function(){
+        const input = document.getElementById('externalCopyInput');
+        input.select();
+        try { document.execCommand('copy'); } catch(e) {}
+      };
+      window.closeExternalModal = hideOpenExternalModal;
+    })();
   </script>
+
+  <!-- Modal: shown when in TikTok in-app browser to prompt opening externally -->
+  <div id="externalOpenModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); align-items:center; justify-content:center; z-index:9999;">
+    <div style="width:min(520px,92%); background:white; border-radius:12px; padding:18px; box-shadow:0 10px 40px rgba(0,0,0,0.4); text-align:left;">
+      <h3 style="margin:0 0 10px;">Ouvrir dans le navigateur</h3>
+      <p style="margin:0 0 12px; color:#374151;">L'application intégrée peut empêcher le paiement. Choisissez une option pour ouvrir cette page dans votre navigateur.</p>
+      <input id="externalCopyInput" type="text" readonly style="width:100%; padding:8px; border:1px solid #e5e7eb; border-radius:6px; margin-bottom:12px; font-size:13px;" />
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button onclick="openInChromeIntent()" style="flex:1; padding:10px; background:#10b981; color:white; border:none; border-radius:8px; font-weight:700;">Ouvrir dans Chrome (Android)</button>
+        <button onclick="openInBrowser()" style="flex:1; padding:10px; background:#3b82f6; color:white; border:none; border-radius:8px; font-weight:700;">Ouvrir dans le navigateur</button>
+        <button onclick="copyLinkToClipboard()" style="padding:10px; background:#f3f4f6; border:1px solid #e5e7eb; border-radius:8px;">Copier le lien</button>
+        <button onclick="closeExternalModal()" style="padding:10px; background:transparent; border:none; color:#6b7280;">Annuler</button>
+      </div>
+      <p style="font-size:12px; color:#6b7280; margin-top:10px;">Si vous êtes sur iPhone: appuyez sur le menu (⋯) et choisissez "Ouvrir dans Safari".</p>
+    </div>
+  </div>
 
 </body>
 </html>
